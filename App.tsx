@@ -1,45 +1,125 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
 import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  Button,
+  ScrollView,
+} from 'react-native';
+import TextInputComponents from './src/Components/TextInput';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+    <>
+      <View style={styles.container}>
+        <Text style={styles.greenbox}>Hello World</Text>
+        <Text style={styles.red}>Hello World</Text>
+        <Text style={styles.blue}>Hello World</Text>
+      </View>
+      <ScrollView contentContainerStyle={styles.scrollviewContent}>
+        <View>
+          <Text style={styles.text}>hello</Text>
+          <Text style={styles.nestedtext}>
+            text compnent can be <Text style={styles.bold}>Nested</Text>
+          </Text>
+          {/* u can add remote url */}
+          <Image
+            style={styles.image}
+            source={{
+              uri: 'https://imgs.search.brave.com/L8lCBInYVNbZ-hnQCyBTf5qcPSAYp_qVOfxBAm1oftI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMw/NjE4NTA2OC92ZWN0/b3Ivcy1sZXR0ZXIt/cy1tb25vZ3JhbS10/aGUtb3JpZ2luYWwt/Z3JlZW4tcy1sZXR0/ZXItd2l0aC1sZWF2/ZXMtYW5kLWJlcnJp/ZXMtY2xhc3NpYy1z/dHlsZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9LXdNY3FR/NW93RjlWMnZUdkM5/T1dVbUxwb1JVOUk1/MWxiOEFkVHgwN3NL/dz0',
+            }}
+            height={150}
+            width={150}
+          />
+          <Image
+            style={styles.image}
+            source={{
+              uri: 'https://imgs.search.brave.com/L8lCBInYVNbZ-hnQCyBTf5qcPSAYp_qVOfxBAm1oftI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMw/NjE4NTA2OC92ZWN0/b3Ivcy1sZXR0ZXIt/cy1tb25vZ3JhbS10/aGUtb3JpZ2luYWwt/Z3JlZW4tcy1sZXR0/ZXItd2l0aC1sZWF2/ZXMtYW5kLWJlcnJp/ZXMtY2xhc3NpYy1z/dHlsZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9LXdNY3FR/NW93RjlWMnZUdkM5/T1dVbUxwb1JVOUk1/MWxiOEFkVHgwN3NL/dz0',
+            }}
+            height={150}
+            width={150}
+          />
+          <Image
+            style={styles.image}
+            source={{
+              uri: 'https://imgs.search.brave.com/L8lCBInYVNbZ-hnQCyBTf5qcPSAYp_qVOfxBAm1oftI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMw/NjE4NTA2OC92ZWN0/b3Ivcy1sZXR0ZXIt/cy1tb25vZ3JhbS10/aGUtb3JpZ2luYWwt/Z3JlZW4tcy1sZXR0/ZXItd2l0aC1sZWF2/ZXMtYW5kLWJlcnJp/ZXMtY2xhc3NpYy1z/dHlsZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9LXdNY3FR/NW93RjlWMnZUdkM5/T1dVbUxwb1JVOUk1/MWxiOEFkVHgwN3NL/dz0',
+            }}
+            height={150}
+            width={150}
+          />
+          <Image
+            style={styles.image}
+            source={{
+              uri: 'https://imgs.search.brave.com/L8lCBInYVNbZ-hnQCyBTf5qcPSAYp_qVOfxBAm1oftI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMw/NjE4NTA2OC92ZWN0/b3Ivcy1sZXR0ZXIt/cy1tb25vZ3JhbS10/aGUtb3JpZ2luYWwt/Z3JlZW4tcy1sZXR0/ZXItd2l0aC1sZWF2/ZXMtYW5kLWJlcnJp/ZXMtY2xhc3NpYy1z/dHlsZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9LXdNY3FR/NW93RjlWMnZUdkM5/T1dVbUxwb1JVOUk1/MWxiOEFkVHgwN3NL/dz0',
+            }}
+            height={150}
+            width={150}
+          />
+          {/* add local image  */}
+          {/* <Image source={require("")}/> */}
+          <Button
+            color={'green'}
+            title="Click me"
+            onPress={() => {
+              //here u can add same as react bro that it onlick we use onpress
+            }}
+          />
+        </View>
+        <TextInputComponents />
+      </ScrollView>
+    </>
   );
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
+// view
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    padding: 40,
+    gap: 20,
+    flexDirection: 'row',
   },
+  greenbox: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'green',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  red: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'red',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  blue: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'blue',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  nestedtext: {
+    fontSize: 12,
+    paddingTop: 30,
+    paddingBottom: 30,
+    backgroundColor: 'green',
+  },
+  bold: {
+    fontSize: 23,
+    fontWeight: 'bold',
+  },
+  text: {
+    fontSize: 34,
+  },
+  image: {
+    resizeMode: 'contain',
+  },
+  scrollviewContent:{
+    padding:20
+  }
 });
 
 export default App;
