@@ -9,6 +9,8 @@ import {
 import TextInputComponents from './src/Components/TextInput';
 import ScrollViews from './src/Components/ScrollView';
 import StyleingDemo from './src/Components/Styleing';
+import FlexLayout from './src/Components/FlexLayout';
+import Touchable from './src/Components/Touchable';
 
 function App() {
   return (
@@ -75,6 +77,8 @@ function App() {
         <ScrollViews />
         <StyleingDemo />
       </ScrollView>
+      <FlexLayout />
+      <Touchable />
     </>
   );
 }
