@@ -7,6 +7,8 @@ import {
   ScrollView,
 } from 'react-native';
 import TextInputComponents from './src/Components/TextInput';
+import ScrollViews from './src/Components/ScrollView';
+import StyleingDemo from './src/Components/Styleing';
 
 function App() {
   return (
@@ -16,7 +18,11 @@ function App() {
         <Text style={styles.red}>Hello World</Text>
         <Text style={styles.blue}>Hello World</Text>
       </View>
-      <ScrollView contentContainerStyle={styles.scrollviewContent}>
+      <ScrollView
+        contentContainerStyle={styles.scrollviewContent}
+        bounces={true}
+        nestedScrollEnabled={true}
+      >
         <View>
           <Text style={styles.text}>hello</Text>
           <Text style={styles.nestedtext}>
@@ -66,6 +72,8 @@ function App() {
           />
         </View>
         <TextInputComponents />
+        <ScrollViews />
+        <StyleingDemo />
       </ScrollView>
     </>
   );
@@ -117,9 +125,20 @@ const styles = StyleSheet.create({
   image: {
     resizeMode: 'contain',
   },
-  scrollviewContent:{
-    padding:20
-  }
+  scrollviewContent: {
+    padding: 20,
+  },
+  box: {
+    height: 40,
+    margin: 10,
+    backgroundColor: 'blue',
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
+  boxtext: {
+    color: 'gray',
+    fontWeight: 'bold',
+  },
 });
 
 export default App;
