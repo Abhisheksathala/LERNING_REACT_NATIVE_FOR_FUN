@@ -5,16 +5,32 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import { Todo } from '../types';
+import React, { useState } from 'react';
 
-const TodoEdit = () => {
+interface TodoEditProps {
+  todo: Todo;
+  onsave: (newtext: string) => void;
+  oncancel: () => void;
+}
+
+const TodoEdit: React.FC<TodoEditProps> = ({ todo, onsave, oncancel }) => {
+  const [text, setText] = useState(todo?.text);
+
+  const handlesave = () => {
+    if (text.trim()) {
+      onsave(text.trim());
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <TextInput style={styles.input} />
+      <TextInput onChangeText={setText} value={text} style={styles.input} />
       <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.editbtn}>
+        <TouchableOpacity onPress={() => handlesave()} style={styles.editbtn}>
           <Text>save</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.delbtn}>
+        <TouchableOpacity onPress={oncancel} style={styles.delbtn}>
           <Text>cancel</Text>
         </TouchableOpacity>
       </View>

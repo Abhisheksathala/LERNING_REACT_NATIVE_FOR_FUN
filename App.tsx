@@ -47,7 +47,20 @@ function App() {
     setTodolist(togoletodo);
   };
 
-  const editTodo = (id: string, newText: string) => {};
+  const editTodo = (id: string, newText: string) => {
+    console.log(id, newText);
+
+    const updatedTodoList = todolist.map((item, _) => {
+      return item.id === id
+        ? {
+            ...item,
+            text: newText,
+          }
+        : item;
+    });
+
+    setTodolist(updatedTodoList);
+  };
 
   return (
     <>

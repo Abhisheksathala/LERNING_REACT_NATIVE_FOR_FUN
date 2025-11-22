@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { Todo } from '../types';
+import TodoEdit from './TodoEdit';
 
 interface TOdoitemProps {
   todo: Todo;
@@ -16,6 +17,24 @@ const TodoItems: React.FC<TOdoitemProps> = ({
   editTodo,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
+
+  const handleEdit = (newtext: string) => {
+    editTodo(newtext);
+    setIsEditing(false);
+  };
+
+  if (isEditing) {
+    return (
+      <TodoEdit
+        todo={todo}
+        onsave={handleEdit}
+        oncancel={() => {
+          setIsEditing(false);
+          console.log('cancle');
+        }}
+      />
+    );
+  }
 
   return (
     <>
@@ -48,7 +67,6 @@ const TodoItems: React.FC<TOdoitemProps> = ({
 };
 
 export default TodoItems;
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
