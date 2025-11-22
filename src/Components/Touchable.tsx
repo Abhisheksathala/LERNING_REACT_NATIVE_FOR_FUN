@@ -9,7 +9,7 @@ import {
 
 const Touchable = () => {
   const [opacityCount, setOpacityCount] = useState(0);
-  const [higlightCount,setHiglightCount] = useState(0)
+  const [higlightCount, setHiglightCount] = useState(0);
 
   return (
     <View style={styles.container}>
@@ -21,9 +21,11 @@ const Touchable = () => {
         <Text style={styles.text}>Touchable Opacity </Text>
       </TouchableOpacity>
       <TouchableHighlight
-      // onclick
-      onPress={()=>setHiglightCount(higlightCount + 1)}
-      underlayColor={"red"} style={styles.btn}>
+        // onclick
+        onPress={() => setHiglightCount(higlightCount + 1)}
+        underlayColor={'red'}
+        style={styles.btn}
+      >
         <Text style={styles.text}>Touchable Opacity </Text>
       </TouchableHighlight>
     </View>

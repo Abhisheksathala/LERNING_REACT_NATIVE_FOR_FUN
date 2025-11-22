@@ -9,10 +9,46 @@ import {
 import TextInputComponents from './src/Components/TextInput';
 import ScrollViews from './src/Components/ScrollView';
 import StyleingDemo from './src/Components/Styleing';
-import FlexLayout from './src/Components/FlexLayout';
-import Touchable from './src/Components/Touchable';
+// import FlexLayout from './src/Components/FlexLayout';
+// import Touchable from './src/Components/Touchable';
+import TodoInput from './src/Todo/TodoInput';
+import { useState } from 'react';
+import TodoList from './src/Todo/TodoList';
+import { Todo } from './src/types';
 
 function App() {
+  const [todolist, setTodolist] = useState<Todo[]>([]);
+
+  const addTodo = (text: string) => {
+    setTodolist([
+      ...todolist,
+      {
+        id: Date.now().toString(),
+        text: text,
+        completed: false,
+      },
+    ]);
+  };
+
+  const OnDeleteTodo = (id: string) => {
+    const DletetTodo = todolist.filter(todo => todo.id !== id);
+    setTodolist(DletetTodo);
+  };
+
+  const OntogelTodo = (id: string) => {
+    const togoletodo = todolist.map((item, _) => {
+      return item.id === id
+        ? {
+            ...item,
+            completed: !item.completed,
+          }
+        : item;
+    });
+    setTodolist(togoletodo);
+  };
+
+  const editTodo = (id: string, newText: string) => {};
+
   return (
     <>
       <View style={styles.container}>
@@ -20,65 +56,74 @@ function App() {
         <Text style={styles.red}>Hello World</Text>
         <Text style={styles.blue}>Hello World</Text>
       </View>
-      <ScrollView
-        contentContainerStyle={styles.scrollviewContent}
-        bounces={true}
-        nestedScrollEnabled={true}
-      >
-        <View>
-          <Text style={styles.text}>hello</Text>
-          <Text style={styles.nestedtext}>
-            text compnent can be <Text style={styles.bold}>Nested</Text>
-          </Text>
-          {/* u can add remote url */}
-          <Image
-            style={styles.image}
-            source={{
-              uri: 'https://imgs.search.brave.com/L8lCBInYVNbZ-hnQCyBTf5qcPSAYp_qVOfxBAm1oftI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMw/NjE4NTA2OC92ZWN0/b3Ivcy1sZXR0ZXIt/cy1tb25vZ3JhbS10/aGUtb3JpZ2luYWwt/Z3JlZW4tcy1sZXR0/ZXItd2l0aC1sZWF2/ZXMtYW5kLWJlcnJp/ZXMtY2xhc3NpYy1z/dHlsZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9LXdNY3FR/NW93RjlWMnZUdkM5/T1dVbUxwb1JVOUk1/MWxiOEFkVHgwN3NL/dz0',
-            }}
-            height={150}
-            width={150}
-          />
-          <Image
-            style={styles.image}
-            source={{
-              uri: 'https://imgs.search.brave.com/L8lCBInYVNbZ-hnQCyBTf5qcPSAYp_qVOfxBAm1oftI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMw/NjE4NTA2OC92ZWN0/b3Ivcy1sZXR0ZXIt/cy1tb25vZ3JhbS10/aGUtb3JpZ2luYWwt/Z3JlZW4tcy1sZXR0/ZXItd2l0aC1sZWF2/ZXMtYW5kLWJlcnJp/ZXMtY2xhc3NpYy1z/dHlsZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9LXdNY3FR/NW93RjlWMnZUdkM5/T1dVbUxwb1JVOUk1/MWxiOEFkVHgwN3NL/dz0',
-            }}
-            height={150}
-            width={150}
-          />
-          <Image
-            style={styles.image}
-            source={{
-              uri: 'https://imgs.search.brave.com/L8lCBInYVNbZ-hnQCyBTf5qcPSAYp_qVOfxBAm1oftI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMw/NjE4NTA2OC92ZWN0/b3Ivcy1sZXR0ZXIt/cy1tb25vZ3JhbS10/aGUtb3JpZ2luYWwt/Z3JlZW4tcy1sZXR0/ZXItd2l0aC1sZWF2/ZXMtYW5kLWJlcnJp/ZXMtY2xhc3NpYy1z/dHlsZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9LXdNY3FR/NW93RjlWMnZUdkM5/T1dVbUxwb1JVOUk1/MWxiOEFkVHgwN3NL/dz0',
-            }}
-            height={150}
-            width={150}
-          />
-          <Image
-            style={styles.image}
-            source={{
-              uri: 'https://imgs.search.brave.com/L8lCBInYVNbZ-hnQCyBTf5qcPSAYp_qVOfxBAm1oftI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMw/NjE4NTA2OC92ZWN0/b3Ivcy1sZXR0ZXIt/cy1tb25vZ3JhbS10/aGUtb3JpZ2luYWwt/Z3JlZW4tcy1sZXR0/ZXItd2l0aC1sZWF2/ZXMtYW5kLWJlcnJp/ZXMtY2xhc3NpYy1z/dHlsZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9LXdNY3FR/NW93RjlWMnZUdkM5/T1dVbUxwb1JVOUk1/MWxiOEFkVHgwN3NL/dz0',
-            }}
-            height={150}
-            width={150}
-          />
-          {/* add local image  */}
-          {/* <Image source={require("")}/> */}
-          <Button
-            color={'green'}
-            title="Click me"
-            onPress={() => {
-              //here u can add same as react bro that it onlick we use onpress
-            }}
-          />
-        </View>
-        <TextInputComponents />
-        <ScrollViews />
-        <StyleingDemo />
-      </ScrollView>
-      <FlexLayout />
-      <Touchable />
+      <View style={styles.hidden}>
+        <ScrollView
+          contentContainerStyle={styles.scrollviewContent}
+          bounces={true}
+          nestedScrollEnabled={true}
+        >
+          <View>
+            <Text style={styles.text}>hello</Text>
+            <Text style={styles.nestedtext}>
+              text compnent can be <Text style={styles.bold}>Nested</Text>
+            </Text>
+            {/* u can add remote url */}
+            <Image
+              style={styles.image}
+              source={{
+                uri: 'https://imgs.search.brave.com/L8lCBInYVNbZ-hnQCyBTf5qcPSAYp_qVOfxBAm1oftI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMw/NjE4NTA2OC92ZWN0/b3Ivcy1sZXR0ZXIt/cy1tb25vZ3JhbS10/aGUtb3JpZ2luYWwt/Z3JlZW4tcy1sZXR0/ZXItd2l0aC1sZWF2/ZXMtYW5kLWJlcnJp/ZXMtY2xhc3NpYy1z/dHlsZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9LXdNY3FR/NW93RjlWMnZUdkM5/T1dVbUxwb1JVOUk1/MWxiOEFkVHgwN3NL/dz0',
+              }}
+              height={150}
+              width={150}
+            />
+            <Image
+              style={styles.image}
+              source={{
+                uri: 'https://imgs.search.brave.com/L8lCBInYVNbZ-hnQCyBTf5qcPSAYp_qVOfxBAm1oftI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMw/NjE4NTA2OC92ZWN0/b3Ivcy1sZXR0ZXIt/cy1tb25vZ3JhbS10/aGUtb3JpZ2luYWwt/Z3JlZW4tcy1sZXR0/ZXItd2l0aC1sZWF2/ZXMtYW5kLWJlcnJp/ZXMtY2xhc3NpYy1z/dHlsZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9LXdNY3FR/NW93RjlWMnZUdkM5/T1dVbUxwb1JVOUk1/MWxiOEFkVHgwN3NL/dz0',
+              }}
+              height={150}
+              width={150}
+            />
+            <Image
+              style={styles.image}
+              source={{
+                uri: 'https://imgs.search.brave.com/L8lCBInYVNbZ-hnQCyBTf5qcPSAYp_qVOfxBAm1oftI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMw/NjE4NTA2OC92ZWN0/b3Ivcy1sZXR0ZXIt/cy1tb25vZ3JhbS10/aGUtb3JpZ2luYWwt/Z3JlZW4tcy1sZXR0/ZXItd2l0aC1sZWF2/ZXMtYW5kLWJlcnJp/ZXMtY2xhc3NpYy1z/dHlsZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9LXdNY3FR/NW93RjlWMnZUdkM5/T1dVbUxwb1JVOUk1/MWxiOEFkVHgwN3NL/dz0',
+              }}
+              height={150}
+              width={150}
+            />
+            <Image
+              style={styles.image}
+              source={{
+                uri: 'https://imgs.search.brave.com/L8lCBInYVNbZ-hnQCyBTf5qcPSAYp_qVOfxBAm1oftI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMw/NjE4NTA2OC92ZWN0/b3Ivcy1sZXR0ZXIt/cy1tb25vZ3JhbS10/aGUtb3JpZ2luYWwt/Z3JlZW4tcy1sZXR0/ZXItd2l0aC1sZWF2/ZXMtYW5kLWJlcnJp/ZXMtY2xhc3NpYy1z/dHlsZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9LXdNY3FR/NW93RjlWMnZUdkM5/T1dVbUxwb1JVOUk1/MWxiOEFkVHgwN3NL/dz0',
+              }}
+              height={150}
+              width={150}
+            />
+            {/* add local image  */}
+            {/* <Image source={require("")}/> */}
+            <Button
+              color={'green'}
+              title="Click me"
+              onPress={() => {
+                //here u can add same as react bro that it onlick we use onpress
+              }}
+            />
+          </View>
+          <TextInputComponents />
+          <ScrollViews />
+          <StyleingDemo />
+        </ScrollView>
+      </View>
+      {/* <FlexLayout /> */}
+      {/* <Touchable /> */}
+      <TodoInput onAddTodo={addTodo} />
+      <TodoList
+        OntogelTodo={OntogelTodo}
+        OnDeleteTodo={OnDeleteTodo}
+        editTodo={editTodo}
+        todolist={todolist}
+      />
     </>
   );
 }
@@ -142,6 +187,9 @@ const styles = StyleSheet.create({
   boxtext: {
     color: 'gray',
     fontWeight: 'bold',
+  },
+  hidden: {
+    display: 'none',
   },
 });
 
