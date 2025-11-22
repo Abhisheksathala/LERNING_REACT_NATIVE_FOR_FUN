@@ -6,7 +6,7 @@ interface TOdoitemProps {
   todo: Todo;
   OnDeleteTodo: (id: string) => void;
   OntogelTodo: (id: string) => void;
-  editTodo: (id: string, newtitle: string) => void;
+  editTodo: (newtitle: string) => void;
 }
 
 const TodoItems: React.FC<TOdoitemProps> = ({
@@ -33,7 +33,7 @@ const TodoItems: React.FC<TOdoitemProps> = ({
 
         <View style={styles.btncontainer}>
           <TouchableOpacity
-            onPress={() => editTodo(todo.id)}
+            onPress={() => setIsEditing(true)}
             style={styles.editbtn}
           >
             <Text>Edit</Text>

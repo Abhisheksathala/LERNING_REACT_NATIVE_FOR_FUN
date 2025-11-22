@@ -25,7 +25,7 @@ const TodoList: React.FC<TodoListProps> = ({
               key={index}
               OnDeleteTodo={OnDeleteTodo}
               OntogelTodo={OntogelTodo}
-              editTodo={newText => editTodo(todo?.id)}
+              editTodo={newText => editTodo(todo?.id, newText)}
               todo={todo}
             />
           </>
