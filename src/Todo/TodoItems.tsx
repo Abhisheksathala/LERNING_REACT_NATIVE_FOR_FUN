@@ -52,8 +52,9 @@ const TodoItems: React.FC<TOdoitemProps> = ({
 
         <View style={styles.btncontainer}>
           <TouchableOpacity
+            disabled={todo?.completed}
             onPress={() => setIsEditing(true)}
-            style={styles.editbtn}
+            style={[!todo.completed ? styles.editbtn : styles.editbtn2]}
           >
             <Text>Edit</Text>
           </TouchableOpacity>
@@ -93,6 +94,12 @@ const styles = StyleSheet.create({
   },
   editbtn: {
     backgroundColor: '#007aff',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 5,
+  },
+  editbtn2: {
+    backgroundColor: '#cccc',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 5,
