@@ -64,7 +64,7 @@ function App() {
 
   return (
     <>
-      <View style={styles.container}>
+      <View style={[styles.container, styles.hidden]}>
         <Text style={styles.greenbox}>Hello World</Text>
         <Text style={styles.red}>Hello World</Text>
         <Text style={styles.blue}>Hello World</Text>
@@ -130,13 +130,18 @@ function App() {
       </View>
       {/* <FlexLayout /> */}
       {/* <Touchable /> */}
-      <TodoInput onAddTodo={addTodo} />
-      <TodoList
-        OntogelTodo={OntogelTodo}
-        OnDeleteTodo={OnDeleteTodo}
-        editTodo={editTodo}
-        todolist={todolist}
-      />
+      <View style={styles.hidden}>
+        <TodoInput onAddTodo={addTodo} />
+        <TodoList
+          OntogelTodo={OntogelTodo}
+          OnDeleteTodo={OnDeleteTodo}
+          editTodo={editTodo}
+          todolist={todolist}
+        />
+      </View>
+      <View>
+        <Text>hello</Text>
+      </View>
     </>
   );
 }
