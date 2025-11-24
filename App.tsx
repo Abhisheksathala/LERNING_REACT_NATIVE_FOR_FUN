@@ -15,6 +15,12 @@ import TodoInput from './src/Todo/TodoInput';
 import { useState } from 'react';
 import TodoList from './src/Todo/TodoList';
 import { Todo } from './src/types';
+import StackNavigationDemo from './src/Components/StackNavigationDemo/StackNavigationDemo';
+
+// routing
+import { NavigationContainer } from '@react-navigation/native';
+
+import RooteNavigator from './src/RooteNavigator';
 
 function App() {
   const [todolist, setTodolist] = useState<Todo[]>([]);
@@ -139,9 +145,13 @@ function App() {
           todolist={todolist}
         />
       </View>
-      <View>
-        <Text>hello</Text>
-      </View>
+
+      {/*  */}
+
+      <NavigationContainer>
+        <RooteNavigator />
+        {/* <StackNavigationDemo /> */}
+      </NavigationContainer>
     </>
   );
 }
@@ -185,6 +195,8 @@ const styles = StyleSheet.create({
   bold: {
     fontSize: 23,
     fontWeight: 'bold',
+    paddingVertical: 50,
+    paddingHorizontal: 30,
   },
   text: {
     fontSize: 34,
