@@ -23,10 +23,7 @@ const StackS2: React.FC = () => {
     <View>
       <Text>Stack 2</Text>
       <Text>Item ID : {route.params.itemId}</Text>
-      <Button
-        title="stack 1 forword "
-        onPress={() => navigat.navigate('Stack1')}
-      />
+      <Button title="stack 1 forword " onPress={() => navigat.goBack()} />
     </View>
   );
 };

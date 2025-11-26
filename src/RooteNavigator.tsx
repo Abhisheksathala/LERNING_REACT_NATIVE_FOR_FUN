@@ -2,7 +2,6 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './HomeScreen';
 import StackNavigationDemo from './Components/StackNavigationDemo/StackNavigationDemo';
-import StackS1 from './Components/StackNavigationDemo/StackS1';
 
 /**
  * types@
