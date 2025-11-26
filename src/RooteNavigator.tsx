@@ -2,6 +2,8 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './HomeScreen';
 import StackNavigationDemo from './Components/StackNavigationDemo/StackNavigationDemo';
+import TabscreenNavigationDemo from './Components/TabNavigationDemo/TabscreenNavigationDemo';
+import DrawerNavigationDemo from './Components/DrawerNavigationDemo/DrawerNavigationDemo';
 
 /**
  * types@
@@ -10,6 +12,8 @@ import StackNavigationDemo from './Components/StackNavigationDemo/StackNavigatio
 export type RootStackParamsList = {
   Home: undefined;
   stackDemo: undefined;
+  TabDemo: undefined;
+  DrawerDemo: undefined;
 };
 
 // create an stack navigater here
@@ -20,6 +24,8 @@ const RooteNavigator: React.FC = () => {
     <stack.Navigator>
       <stack.Screen name="Home" component={HomeScreen} />
       <stack.Screen name="stackDemo" component={StackNavigationDemo} />
+      <stack.Screen name="TabDemo" component={TabscreenNavigationDemo} />
+      <stack.Screen name="DrawerDemo" component={DrawerNavigationDemo} />
     </stack.Navigator>
   );
 };
