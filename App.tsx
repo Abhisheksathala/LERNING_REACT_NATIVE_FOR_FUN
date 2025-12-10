@@ -15,7 +15,7 @@ import TodoInput from './src/Todo/TodoInput';
 import { useState } from 'react';
 import TodoList from './src/Todo/TodoList';
 import { Todo } from './src/types';
-import StackNavigationDemo from './src/Components/StackNavigationDemo/StackNavigationDemo';
+import RootNavigater2 from './src/Screens/RootNavigater';
 
 // routing
 import { NavigationContainer } from '@react-navigation/native';
@@ -146,11 +146,11 @@ function App() {
         />
       </View>
 
-      {/*  */}
+      {/* Navtiongation or Routing in the native */}
 
       <NavigationContainer>
-        <RooteNavigator />
-        {/* <StackNavigationDemo /> */}
+        {/* <RooteNavigator /> */}
+        <RootNavigater2 />
       </NavigationContainer>
     </>
   );
